@@ -5,15 +5,19 @@ import { useState } from "react";
 import Title from "./comps/Title";
 import UploadForm from "./comps/UploadForm";
 import ImageGrid from "./comps/ImageGrid";
+import Modal from "./comps/Modal";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [selectedImg, setSelectedImg] = useState(null);
 
   return (
     <>
       <Title />
       <UploadForm />
-      <ImageGrid />
+      <ImageGrid setSelectedImg={setSelectedImg} />
+      {selectedImg && (
+        <Modal selectedImg={selectedImg} setSelectedImg={setSelectedImg} />
+      )}
     </>
   );
 }
