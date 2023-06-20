@@ -3,11 +3,14 @@ import { useState, useEffect } from "react";
 import { db } from "../firebase/config";
 import { collection, query, orderBy, onSnapshot } from "firebase/firestore";
 
-const useFirestore = (collection) => {
+const useFirestore = (collectionName) => {
   const [docs, setDocs] = useState([]);
 
   useEffect(() => {
-    const q = query(collection(db, collection), orderBy("createdAt", "desc"));
+    const q = query(
+      collection(db, collectionName),
+      orderBy("createdAt", "desc")
+    );
 
     const unsubscribe = onSnapshot(q, (QuerySnapshot) => {
       let documents = [];
@@ -16,8 +19,10 @@ const useFirestore = (collection) => {
       });
       setDocs(documents);
     });
+
+    // clean up function
     return () => unsubscribe();
-  }, [collection]);
+  }, [collectionName]);
   return { docs };
 };
 
