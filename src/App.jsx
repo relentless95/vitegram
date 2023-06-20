@@ -4,6 +4,7 @@ import { useState } from "react";
 // import './App.css'
 import Title from "./comps/Title";
 import UploadForm from "./comps/UploadForm";
+import ImageGrid from "./comps/ImageGrid";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -12,6 +13,7 @@ function App() {
     <>
       <Title />
       <UploadForm />
+      <ImageGrid />
     </>
   );
 }

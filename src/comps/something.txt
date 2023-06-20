@@ -36,3 +36,36 @@ const app = initializeApp(firebaseConfig);
   // Initialize Firebase
   const app = initializeApp(firebaseConfig);
 </script>
+
+
+import { useState, useEffect } from 'react';
+import { ref, uploadBytes, getDownloadURL, collection, addDoc, serverTimestamp } from 'firebase/storage';
+import { db, storage } from '../firebase/config';
+
+const useStorage = (file) => {
+  const [progress, setProgress] = useState(0);
+  const [error, setError] = useState(null);
+  const [url, setUrl] = useState(null);
+
+  useEffect(() => {
+    // references
+    const storageRef = ref(storage, file.name);
+    const collectionRef = collection(db, 'images');
+
+    uploadBytes(storageRef, file).on('state_changed', (snap) => {
+      let percentage = (snap.bytesTransferred / snap.totalBytes) * 100;
+      setProgress(percentage);
+    }, (err) => {
+      setError(err);
+    }, async () => {
+      const downloadURL = await getDownloadURL(storageRef);
+      const createdAt = serverTimestamp();
+      await addDoc(collectionRef, { url: downloadURL, createdAt });
+      setUrl(downloadURL);
+    });
+  }, [file]);
+
+  return { progress, url, error };
+}
+
+export default useStorage;
