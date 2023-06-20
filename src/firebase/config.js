@@ -10,22 +10,24 @@ import { getStorage } from "firebase/storage";
 // the database
 import { getFirestore } from "firebase/firestore";
 
+const API_KEY = import.meta.env.VITE_API_KEY;
+const MESSAGING_SENDERID = import.meta.env.VITE_MESSAGING_SENDERID;
+const APPID = import.meta.env.VITE_APPID;
+
+console.log("herrreeeee=========>", API_KEY, MESSAGING_SENDERID, APPID);
+
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyD-EARfHzY5RNJJ-o2g8o2tingDlbjSNHM",
+  apiKey: API_KEY,
   authDomain: "vite-firegram.firebaseapp.com",
   projectId: "vite-firegram",
   storageBucket: "vite-firegram.appspot.com",
-  messagingSenderId: "894947932699",
-  appId: "1:894947932699:web:193d2f8d612a4b563196be",
+  messagingSenderId: MESSAGING_SENDERID,
+  appId: APPID,
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
-
 export const db = getFirestore(app);
 export const storage = getStorage(app);
-
-
-

@@ -17,7 +17,7 @@
 body {
   font-family: "Noto Serif";
   color: var(--secondary);
-  margin: 0 3rem;
+  margin: 0 10rem;
   /* border: 2px solid blue; */
 }
 .App {
@@ -43,7 +43,7 @@ body {
 form {
   margin: 2rem 1rem 2rem;
   text-align: center;
-  border: 1px solid red;
+  /* border: 1px solid red; */
   /* position: absolute; */
   /* top: 50%;
   left: 50%;
@@ -108,13 +108,14 @@ label:hover {
   /* grid-template-columns: 1fr 1fr 1fr; */
   /* grid-gap: 2rem; */
   gap: 1rem;
-  border: 2px solid blue;
+  /* border: 2px solid blue; */
 }
 
 @media screen and (min-width: 768px) {
   .img-grid {
     grid-template-columns: 1fr 1fr;
     /* align-items: start; */
+    
   }
 }
 
@@ -122,6 +123,7 @@ label:hover {
   .img-grid {
     grid-template-columns: 1fr 1fr 1fr;
     /* align-items: start; */
+    
   }
 }
 
@@ -141,11 +143,12 @@ label:hover {
   /* border: 2px solid green; */
   position: relative;
   border-radius: 0.25rem;
+  opacity: 0.8;
 }
 
 .img-wrap img {
-  height: 13rem;
-  border: 5px solid red;
+  height: 20rem;
+  /* border: 5px solid red; */
 }
 
 img {
