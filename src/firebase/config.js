@@ -14,8 +14,6 @@ const API_KEY = import.meta.env.VITE_API_KEY;
 const MESSAGING_SENDERID = import.meta.env.VITE_MESSAGING_SENDERID;
 const APPID = import.meta.env.VITE_APPID;
 
-console.log("herrreeeee=========>", API_KEY, MESSAGING_SENDERID, APPID);
-
 // Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: API_KEY,
